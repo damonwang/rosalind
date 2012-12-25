@@ -1,0 +1,21 @@
+OASISFormat: 0.3
+Name:        Rosalind
+Version:     0.0
+Synopsis:    solves the Rosalind Project puzzles
+Authors:     Wang D <damonwang@uchicago.edu>
+License:     CC-BY-NC-SA
+Plugins:     META (0.3)
+
+Library rosalind_general
+  Path:       lib/
+  Pack:       true
+  BuildTools: ocamlbuild
+  Modules:    Std
+  BuildDepends: core, core_extended, sexplib.syntax, bin_prot.syntax, comparelib.syntax, fieldslib.syntax, variantslib.syntax
+
+Executable rosalind
+  Path:       bin
+  BuildTools: ocamlbuild
+  MainIs:     rosalind.ml
+  BuildDepends: core, core_extended, sexplib.syntax, bin_prot.syntax, comparelib.syntax, fieldslib.syntax, variantslib.syntax
+
