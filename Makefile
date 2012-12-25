@@ -1,7 +1,11 @@
-MLNAMES = rosalind dna rna
-OBJS = $(addsuffix .native, $(MLNAMES))
+.PHONY: all clean
 
-.PHONY: $(OBJS)
+all: _tags
+	./build.sh
 
-$(OBJS): %.native: %.ml
-	./build.sh $@
+_tags: _oasis
+	oasis setup
+	ocaml setup.ml -configure
+
+clean:
+	ocaml setup.ml -clean

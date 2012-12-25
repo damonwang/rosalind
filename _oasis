@@ -6,17 +6,26 @@ Authors:     Wang D <damonwang@uchicago.edu>
 License:     CC-BY-NC-SA
 Plugins:     META (0.3)
 
-Library rosalind_general
+Library rosalindlib
+  FindlibName: rosalindlib
   Path:       lib/
   Pack:       true
   BuildTools: ocamlbuild
   Modules:    Std
   BuildDepends: core, core_extended, sexplib.syntax, bin_prot.syntax, comparelib.syntax, fieldslib.syntax, variantslib.syntax
 
+Library solutions
+  Findlibname: rosalind_solutions
+  Path: solutions/
+  Pack: true
+  BuildTools: ocamlbuild
+  Modules: Dna, Rna, Revc, Gc_content, Synchronous_intf
+  BuildDepends: core, core_extended, sexplib.syntax, bin_prot.syntax, comparelib.syntax, fieldslib.syntax, variantslib.syntax, rosalindlib
+
 Executable rosalind
   Path:       bin
   BuildTools: ocamlbuild
   MainIs:     rosalind.ml
   CompiledObject: native
-  BuildDepends: core, core_extended, sexplib.syntax, bin_prot.syntax, comparelib.syntax, fieldslib.syntax, variantslib.syntax
+  BuildDepends: core, core_extended, sexplib.syntax, bin_prot.syntax, comparelib.syntax, fieldslib.syntax, variantslib.syntax, rosalind_solutions
 
