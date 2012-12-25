@@ -2,3 +2,7 @@
 *.native
 \#*\#
 _build
+*.mlpack
+/setup.*
+META
+/myocamlbuild.ml
