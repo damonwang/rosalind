@@ -19,7 +19,7 @@ Library solutions
   Path: solutions/
   Pack: true
   BuildTools: ocamlbuild
-  Modules: Dna, Rna, Revc, Gc_content, Synchronous_intf
+  Modules: Std, Synchronous_intf, Dna, Rna, Revc, Gc_content
   BuildDepends: core, core_extended, sexplib.syntax, bin_prot.syntax, comparelib.syntax, fieldslib.syntax, variantslib.syntax, rosalindlib
 
 Executable rosalind
@@ -29,3 +29,15 @@ Executable rosalind
   CompiledObject: native
   BuildDepends: core, core_extended, sexplib.syntax, bin_prot.syntax, comparelib.syntax, fieldslib.syntax, variantslib.syntax, rosalind_solutions
 
+Executable test
+  Path: test
+  BuildTools: ocamlbuild
+  MainIs: main.ml
+  CompiledObject: native
+  BuildDepends: core, core_extended, sexplib.syntax, bin_prot.syntax, comparelib.syntax, fieldslib.syntax, variantslib.syntax, rosalind_solutions
+
+Test "whole-program"
+  Type: Custom (0.0.1)
+  TestTools: test
+  Command: $test
+  WorkingDirectory: test

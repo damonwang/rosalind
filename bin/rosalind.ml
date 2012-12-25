@@ -3,13 +3,12 @@ open Core.Std
 let () =
   Command.run begin
     Command.group ~summary:"solve the Rosalind puzzles"
-      (List.map ~f:(fun soln ->
-        let module Intf = Solutions.Synchronous_intf in
+      (List.map Solutions.Std.synchronous ~f:(fun soln ->
         let module Soln = (val soln : Solutions.Synchronous_intf.S) in
-        (Soln.name, Soln.cmd))
-         [ (module Solutions.Dna.Cmd : Solutions.Synchronous_intf.S)
-         ; (module Solutions.Rna.Cmd : Solutions.Synchronous_intf.S)
-         ; (module Solutions.Revc.Cmd : Solutions.Synchronous_intf.S)
-         ; (module Solutions.Gc_content.Cmd : Solutions.Synchronous_intf.S)
-         ])
+        let cmd = Command.basic
+          ~summary:(sprintf "solve the '%s' puzzle" Soln.name)
+          Command.Spec.empty
+          (fun () -> Soln.solve In_channel.stdin Out_channel.stdout)
+        in
+        (Soln.name, cmd)))
   end

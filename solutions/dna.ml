@@ -39,21 +39,18 @@ let count_nucleotides_in_line in_ch =
   in
   iter in_ch Base_count.empty
 
-module Cmd = struct
+module Sync = struct
   let name = "dna"
-  let cmd =
-    Command.basic ~summary:"solve 'dna' puzzle"
-      Command.Spec.empty
-      (fun () ->
-        let count = count_nucleotides_in_line In_channel.stdin in
-        Out_channel.output_string Out_channel.stdout begin
-          match Base_count.unexpected_bases ~expected:Base.dna count with
-          | [] ->
-            String.concat ~sep:" " (List.map Base.dna ~f:(fun c ->
-              sprintf "%d" (Base_count.get count c)) @ [ "\n" ])
-          | other ->
-          sprintf "Non-DNA bases detected: %s\n"
-            (String.concat (List.map other ~f:(Char.to_string)))
-        end)
-end
 
+  let solve in_ch out_ch =
+    let count = count_nucleotides_in_line in_ch  in
+    Out_channel.output_string out_ch begin
+      match Base_count.unexpected_bases ~expected:Base.dna count with
+      | [] ->
+        String.concat ~sep:" " (List.map Base.dna ~f:(fun c ->
+          sprintf "%d" (Base_count.get count c)) @ [ "\n" ])
+      | other ->
+        sprintf "Non-DNA bases detected: %s\n"
+          (String.concat (List.map other ~f:(Char.to_string)))
+    end
+end

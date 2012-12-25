@@ -2,7 +2,7 @@
 true: thread,debug,annot
 
 # OASIS_START
-# DO NOT EDIT (digest: 58c47262a8b983746b433151bc22b720)
+# DO NOT EDIT (digest: d443ed43272cf4fb5a361c104bec9a95)
 # Ignore VCS directories, you can use the same kind of rule outside 
 # OASIS_START/STOP if you want to exclude directories that contains 
 # useless stuff for the build process
@@ -16,9 +16,9 @@ true: thread,debug,annot
 ".git": not_hygienic
 "_darcs": -traverse
 "_darcs": not_hygienic
-# Library rosalind_general
-"lib/rosalind_general.cmxs": use_rosalind_general
-"lib/std.cmx": for-pack(Rosalind_general)
+# Library rosalindlib
+"lib/rosalindlib.cmxs": use_rosalindlib
+"lib/std.cmx": for-pack(Rosalindlib)
 <lib/*.ml{,i}>: pkg_core
 <lib/*.ml{,i}>: pkg_core_extended
 <lib/*.ml{,i}>: pkg_sexplib.syntax
@@ -26,14 +26,34 @@ true: thread,debug,annot
 <lib/*.ml{,i}>: pkg_comparelib.syntax
 <lib/*.ml{,i}>: pkg_fieldslib.syntax
 <lib/*.ml{,i}>: pkg_variantslib.syntax
+# Library solutions
+"solutions/solutions.cmxs": use_solutions
+"solutions/std.cmx": for-pack(Solutions)
+"solutions/synchronous_intf.cmx": for-pack(Solutions)
+"solutions/dna.cmx": for-pack(Solutions)
+"solutions/rna.cmx": for-pack(Solutions)
+"solutions/revc.cmx": for-pack(Solutions)
+"solutions/gc_content.cmx": for-pack(Solutions)
+<solutions/*.ml{,i}>: use_rosalindlib
+<solutions/*.ml{,i}>: pkg_core
+<solutions/*.ml{,i}>: pkg_core_extended
+<solutions/*.ml{,i}>: pkg_sexplib.syntax
+<solutions/*.ml{,i}>: pkg_bin_prot.syntax
+<solutions/*.ml{,i}>: pkg_comparelib.syntax
+<solutions/*.ml{,i}>: pkg_fieldslib.syntax
+<solutions/*.ml{,i}>: pkg_variantslib.syntax
 # Executable rosalind
-"bin/rosalind.byte": pkg_core
-"bin/rosalind.byte": pkg_core_extended
-"bin/rosalind.byte": pkg_sexplib.syntax
-"bin/rosalind.byte": pkg_bin_prot.syntax
-"bin/rosalind.byte": pkg_comparelib.syntax
-"bin/rosalind.byte": pkg_fieldslib.syntax
-"bin/rosalind.byte": pkg_variantslib.syntax
+"bin/rosalind.native": use_solutions
+"bin/rosalind.native": use_rosalindlib
+"bin/rosalind.native": pkg_core
+"bin/rosalind.native": pkg_core_extended
+"bin/rosalind.native": pkg_sexplib.syntax
+"bin/rosalind.native": pkg_bin_prot.syntax
+"bin/rosalind.native": pkg_comparelib.syntax
+"bin/rosalind.native": pkg_fieldslib.syntax
+"bin/rosalind.native": pkg_variantslib.syntax
+<bin/*.ml{,i}>: use_solutions
+<bin/*.ml{,i}>: use_rosalindlib
 <bin/*.ml{,i}>: pkg_core
 <bin/*.ml{,i}>: pkg_core_extended
 <bin/*.ml{,i}>: pkg_sexplib.syntax
@@ -41,4 +61,23 @@ true: thread,debug,annot
 <bin/*.ml{,i}>: pkg_comparelib.syntax
 <bin/*.ml{,i}>: pkg_fieldslib.syntax
 <bin/*.ml{,i}>: pkg_variantslib.syntax
+# Executable test
+"test/main.native": use_solutions
+"test/main.native": use_rosalindlib
+"test/main.native": pkg_core
+"test/main.native": pkg_core_extended
+"test/main.native": pkg_sexplib.syntax
+"test/main.native": pkg_bin_prot.syntax
+"test/main.native": pkg_comparelib.syntax
+"test/main.native": pkg_fieldslib.syntax
+"test/main.native": pkg_variantslib.syntax
+<test/*.ml{,i}>: use_solutions
+<test/*.ml{,i}>: use_rosalindlib
+<test/*.ml{,i}>: pkg_core
+<test/*.ml{,i}>: pkg_core_extended
+<test/*.ml{,i}>: pkg_sexplib.syntax
+<test/*.ml{,i}>: pkg_bin_prot.syntax
+<test/*.ml{,i}>: pkg_comparelib.syntax
+<test/*.ml{,i}>: pkg_fieldslib.syntax
+<test/*.ml{,i}>: pkg_variantslib.syntax
 # OASIS_STOP
