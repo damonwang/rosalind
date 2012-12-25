@@ -19,7 +19,7 @@ Library solutions
   Path: solutions/
   Pack: true
   BuildTools: ocamlbuild
-  Modules: Std, Synchronous_intf, Dna, Rna, Revc, Gc_content
+  Modules: Std, Synchronous_intf, Dna, Rna, Revc, Gc_content, Hamm
   BuildDepends: core, core_extended, sexplib.syntax, bin_prot.syntax, comparelib.syntax, fieldslib.syntax, variantslib.syntax, rosalindlib
 
 Executable rosalind

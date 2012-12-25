@@ -2,7 +2,7 @@
 true: thread,debug,annot
 
 # OASIS_START
-# DO NOT EDIT (digest: 06def393b48589ecaa4153cebf3dda30)
+# DO NOT EDIT (digest: 8951f033d70c824c410e5b71f8ea1236)
 # Ignore VCS directories, you can use the same kind of rule outside 
 # OASIS_START/STOP if you want to exclude directories that contains 
 # useless stuff for the build process
@@ -35,6 +35,7 @@ true: thread,debug,annot
 "solutions/rna.cmx": for-pack(Solutions)
 "solutions/revc.cmx": for-pack(Solutions)
 "solutions/gc_content.cmx": for-pack(Solutions)
+"solutions/hamm.cmx": for-pack(Solutions)
 <solutions/*.ml{,i}>: use_rosalindlib
 <solutions/*.ml{,i}>: pkg_core
 <solutions/*.ml{,i}>: pkg_core_extended
