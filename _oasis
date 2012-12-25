@@ -17,5 +17,6 @@ Executable rosalind
   Path:       bin
   BuildTools: ocamlbuild
   MainIs:     rosalind.ml
+  CompiledObject: native
   BuildDepends: core, core_extended, sexplib.syntax, bin_prot.syntax, comparelib.syntax, fieldslib.syntax, variantslib.syntax
 
