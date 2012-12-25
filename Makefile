@@ -1,4 +1,4 @@
-MLNAMES = rosalind dna
+MLNAMES = rosalind dna rna
 OBJS = $(addsuffix .native, $(MLNAMES))
 
 .PHONY: $(OBJS)
