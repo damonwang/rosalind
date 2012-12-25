@@ -11,7 +11,7 @@ Library rosalindlib
   Path:       lib/
   Pack:       true
   BuildTools: ocamlbuild
-  Modules:    Std
+  Modules:    Std, Fasta
   BuildDepends: core, core_extended, sexplib.syntax, bin_prot.syntax, comparelib.syntax, fieldslib.syntax, variantslib.syntax
 
 Library solutions

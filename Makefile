@@ -6,6 +6,7 @@ all: _tags
 _tags: _oasis
 	oasis setup
 	ocaml setup.ml -configure --enable-tests
+	touch _tags
 
 clean:
 	ocaml setup.ml -clean

@@ -2,7 +2,7 @@
 true: thread,debug,annot
 
 # OASIS_START
-# DO NOT EDIT (digest: d443ed43272cf4fb5a361c104bec9a95)
+# DO NOT EDIT (digest: 06def393b48589ecaa4153cebf3dda30)
 # Ignore VCS directories, you can use the same kind of rule outside 
 # OASIS_START/STOP if you want to exclude directories that contains 
 # useless stuff for the build process
@@ -19,6 +19,7 @@ true: thread,debug,annot
 # Library rosalindlib
 "lib/rosalindlib.cmxs": use_rosalindlib
 "lib/std.cmx": for-pack(Rosalindlib)
+"lib/fasta.cmx": for-pack(Rosalindlib)
 <lib/*.ml{,i}>: pkg_core
 <lib/*.ml{,i}>: pkg_core_extended
 <lib/*.ml{,i}>: pkg_sexplib.syntax

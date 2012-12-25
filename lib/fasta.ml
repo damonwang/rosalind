@@ -25,7 +25,7 @@ let parse_header header =
   let open Option.Monad_infix in
   String.chop_prefix ~prefix:">" header
   >>| fun line ->
-  Option.value ~default:(header, "") (String.lsplit2 ~on:' ' line)
+  Option.value ~default:(line, "") (String.lsplit2 ~on:' ' line)
 
 let of_string s =
   let header, sequence = String.lsplit2_exn s ~on:'\n' in
